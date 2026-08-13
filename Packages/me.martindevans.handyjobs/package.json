@@ -1,0 +1,9 @@
+{
+  "name": "me.martindevans.handyjobs",
+  "version": "1.0.0",
+  "displayName": "HandyJobs",
+  "unity": "6000.4",
+  "dependencies": {
+  },
+  "description": "A collection of handy jobs."
+}
