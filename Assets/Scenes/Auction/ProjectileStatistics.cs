@@ -60,6 +60,11 @@ namespace Scenes.Auction
         {
         }
 
+        public void ReportFlakFired()
+        {
+            throw new NotImplementedException();
+        }
+
         private void Update()
         {
             _builder.Append("Hits: ");

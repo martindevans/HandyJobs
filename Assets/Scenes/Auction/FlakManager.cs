@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scenes.Auction
 {
-    public class BulletManager
+    public class FlakManager
         : MonoBehaviour
     {
         public Bullet BulletPrefab;

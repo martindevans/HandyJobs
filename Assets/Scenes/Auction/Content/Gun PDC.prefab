@@ -88,10 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e7ff95a9dc34c4f99a999c3fa2fefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  PivotTransform: {fileID: 5715321305082466732}
+  Pivot: {fileID: 5715321305082466732}
   BulletManager: {fileID: 0}
+  Statistics: {fileID: 0}
   BulletsPerSecond: 10
-  BulletSpeed: 25
+  BulletSpeed: 33
   RotationSpeed: 90
 --- !u!1 &4589756721249278945
 GameObject:

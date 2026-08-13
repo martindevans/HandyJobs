@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Scenes.Auction
 {
-    public class Gun
+    public class FlakGun
         : BaseWeaponSystem
     {
-        public BulletManager BulletManager;
+        public FlakManager FlakManager;
         public ProjectileStatistics Statistics;
 
         public float BulletsPerSecond = 1;
@@ -15,8 +15,8 @@ namespace Scenes.Auction
 
         private void OnEnable()
         {
-            if (!BulletManager)
-                BulletManager = GetComponentInParent<BulletManager>();
+            if (!FlakManager)
+                FlakManager = GetComponentInParent<FlakManager>();
             if (!Statistics)
                 Statistics = GetComponentInParent<ProjectileStatistics>();
         }
@@ -36,7 +36,7 @@ namespace Scenes.Auction
             {
                 var bpos = pos + fwd * 0.5f;
                 _timeAccumulator = 0;
-                BulletManager.Spawn(bpos, BulletSpeed, Target);
+                FlakManager.Spawn(bpos, BulletSpeed, Target);
                 Statistics.ReportBulletFired();
             }
         }

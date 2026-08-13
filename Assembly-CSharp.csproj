@@ -62,9 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scenes\Auction\Bullet.cs" />
+    <Compile Include="Assets\Extensions\InterceptHelpers.cs" />
     <Compile Include="Assets\Scenes\Auction\ProjectileStatistics.cs" />
     <Compile Include="Assets\Scenes\Auction\ParticleSystemSelfDestruct.cs" />
+    <Compile Include="Assets\Extensions\VectorHelpers.cs" />
+    <Compile Include="Assets\Scenes\Auction\FlakManager.cs" />
     <Compile Include="Assets\Scenes\Auction\BaseWeaponSystem.cs" />
+    <Compile Include="Assets\Scenes\Auction\FlakGun.cs" />
     <Compile Include="Assets\Scenes\Auction\Laser.cs" />
     <Compile Include="Assets\Scenes\Auction\BulletManager.cs" />
     <Compile Include="Assets\Scenes\Auction\ProjectileSpawner.cs" />

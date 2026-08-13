@@ -1,6 +1,5 @@
 using Unity.Mathematics;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Scenes.Auction
 {
