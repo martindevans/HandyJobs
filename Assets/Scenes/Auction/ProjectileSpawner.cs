@@ -4,6 +4,7 @@ using Auction;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Scenes.Auction
 {
@@ -14,6 +15,10 @@ namespace Scenes.Auction
         public float Radius = 500;
         public float MinSpeed = 5;
         public float MaxSpeed = 50;
+
+        public float BurstInterval = 10f;
+        public int BurstCount = 10;
+        public float BurstSpread = 15f;
 
         public float PerBulletPenalty = 0.1f;
 
@@ -26,12 +31,13 @@ namespace Scenes.Auction
         private void OnEnable()
         {
             StartCoroutine(SpawnLoop());
+            StartCoroutine(BurstSpawnLoop());
             StartCoroutine(AssignmentLoop());
         }
 
         private IEnumerator SpawnLoop()
         {
-            var rng = new System.Random();
+            var rng = new Random();
             while (true)
             {
                 yield return null;
@@ -41,16 +47,53 @@ namespace Scenes.Auction
                 math.sincos(angle, out var s, out var c);
 
                 var pos = new Vector3(s * Radius, 25, c * Radius);
-                var dir = (-pos).normalized;
-                var vel = dir * ((float)rng.NextDouble() * (MaxSpeed - MinSpeed) + MinSpeed);
-
-                var proj = Instantiate(Prefab, pos, Quaternion.identity);
-                proj.GetComponent<Rigidbody>().linearVelocity = vel;
-                proj.Statistics = Statistics;
-
-                _projectiles.Add(proj);
+                SpawnProjectile(pos, rng, MinSpeed, MaxSpeed);
             }
             // ReSharper disable once IteratorNeverReturns
+        }
+
+        private IEnumerator BurstSpawnLoop()
+        {
+            var rng = new Random();
+            while (true)
+            {
+                yield return null;
+                yield return new WaitForSeconds((float)rng.NextDouble() * BurstInterval);
+
+                var angle = (float)rng.NextDouble() * math.PI2;
+                math.sincos(angle, out var s, out var c);
+
+                var centerPos = new Vector3(s * Radius, 25, c * Radius);
+
+                var speedRange = MaxSpeed - MinSpeed;
+                var burstRange = speedRange * ((float)rng.NextDouble() * 0.5f + 0.25f);
+                var burstMin = MinSpeed + (float)rng.NextDouble() * (speedRange - burstRange);
+                var burstMax = burstMin + burstRange;
+
+                for (var i = 0; i < BurstCount; i++)
+                {
+                    var offset = new Vector3(
+                        ((float)rng.NextDouble() - 0.5f) * 2f * BurstSpread,
+                        ((float)rng.NextDouble() - 0.5f) * 2f * BurstSpread,
+                        ((float)rng.NextDouble() - 0.5f) * 2f * BurstSpread
+                    );
+                    var pos = centerPos + offset;
+                    SpawnProjectile(pos, rng, burstMin, burstMax);
+                }
+            }
+            // ReSharper disable once IteratorNeverReturns
+        }
+
+        private void SpawnProjectile(Vector3 pos, Random rng, float minSpeed, float maxSpeed)
+        {
+            var dir = (-pos).normalized;
+            var vel = dir * ((float)rng.NextDouble() * (maxSpeed - minSpeed) + minSpeed);
+
+            var proj = Instantiate(Prefab, pos, Quaternion.identity);
+            proj.Velocity = vel;
+            proj.Statistics = Statistics;
+
+            _projectiles.Add(proj);
         }
 
         private IEnumerator AssignmentLoop()

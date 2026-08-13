@@ -18,7 +18,11 @@ namespace Scenes.Auction
         public float DistanceFromOrigin { get; private set; }
 
         private Rigidbody _body;
-        public Vector3 Velocity => _body.linearVelocity;
+        public Vector3 Velocity
+        {
+            get => _body.linearVelocity;
+            set => _body.linearVelocity = value;
+        }
 
         private readonly HashSet<Bullet> _bullets = new();
         public int AttachedBulletsCount => _bullets.Count;

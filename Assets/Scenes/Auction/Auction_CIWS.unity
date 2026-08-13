@@ -2015,6 +2015,10 @@ MonoBehaviour:
   Radius: 1000
   MinSpeed: 5
   MaxSpeed: 150
+  BurstInterval: 5
+  BurstCount: 25
+  BurstSpread: 25
+  PerBulletPenalty: 0.1
   Statistics: {fileID: 1679687727}
   Prefab: {fileID: 6673844347048960537, guid: d211e5b15a0a17747a81d6216a1d7514, type: 3}
   Guns:
