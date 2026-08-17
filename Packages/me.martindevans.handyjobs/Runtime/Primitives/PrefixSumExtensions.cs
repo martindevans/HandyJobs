@@ -46,14 +46,14 @@ namespace Primitives
 
             // Compute the prefix sum within each block, writing the partial results to Output.
             // Also record each blocks total sum in BlockSums.
-            var handle = new ScanBlocksJob(input, output, blockSums, BlockSize).Schedule(blockCount, 1, dependency);
+            var handle = new ScanBlocksJob(input, output, blockSums).Schedule(blockCount, 1, dependency);
 
             // Computes the prefix sum of the block totals, producing the starting offset for each block.
             handle = new ScanBlockSumsJob(blockSums, blockOffsets).Schedule(handle);
 
             // Adds each block’s accumulated offset to its locally scanned values.
             // This converts the per-block prefix sums into the final global prefix sum.
-            handle = new AddBlockOffsetsJob(output, blockOffsets, BlockSize).Schedule(input.Length, 64, handle);
+            handle = new AddBlockOffsetsJob(output, blockOffsets).Schedule(input.Length, 64, handle);
 
             // Clean up
             handle = blockSums.Dispose(handle);
@@ -71,14 +71,11 @@ namespace Primitives
             [WriteOnly, NativeDisableParallelForRestriction] private NativeArray<int> Output;
             [WriteOnly] private NativeArray<int> BlockSums;
 
-            private readonly int BlockSize;
-
-            public ScanBlocksJob(NativeArray<int> input, NativeArray<int> output, NativeArray<int> blockSums, int blockSize)
+            public ScanBlocksJob(NativeArray<int> input, NativeArray<int> output, NativeArray<int> blockSums)
             {
                 Input = input;
                 Output = output;
                 BlockSums = blockSums;
-                BlockSize = blockSize;
             }
 
             public void Execute(int blockIndex)
@@ -128,16 +125,13 @@ namespace Primitives
         private struct AddBlockOffsetsJob
             : IJobParallelFor
         {
-            [WriteOnly] private NativeArray<int> Output;
+            private NativeArray<int> Output;
             [ReadOnly] private readonly NativeArray<int> BlockOffsets;
 
-            private readonly int BlockSize;
-
-            public AddBlockOffsetsJob(NativeArray<int> output, NativeArray<int> blockOffsets, int blockSize)
+            public AddBlockOffsetsJob(NativeArray<int> output, NativeArray<int> blockOffsets)
             {
                 Output = output;
                 BlockOffsets = blockOffsets;
-                BlockSize = blockSize;
             }
 
             public void Execute(int index)
