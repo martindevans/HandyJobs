@@ -4,6 +4,7 @@ using System.Text;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Scenes.Auction
 {
@@ -30,10 +31,10 @@ namespace Scenes.Auction
             Hits++;
         }
 
-        public void ReportInterception(Vector3 position)
+        private void UpdateInterceptionStats(Vector3 position)
         {
             var dist = position.magnitude;
-            ClosestInterceptionDistance = math.min(ClosestInterceptionDistance, dist);;
+            ClosestInterceptionDistance = math.min(ClosestInterceptionDistance, dist);
 
             if (Interceptions == 1)
                 AverageInterceptionDistance = dist;
@@ -41,14 +42,19 @@ namespace Scenes.Auction
                 AverageInterceptionDistance += (dist - AverageInterceptionDistance) / (Interceptions + 1);
 
             BulletHitRate = BulletHits / (float)BulletsFired;
+        }
 
+        public void ReportLaserInterception(Vector3 position)
+        {
             Interceptions++;
+            UpdateInterceptionStats(position);
         }
 
         public void ReportBulletInterception(Vector3 position)
         {
-            ReportInterception(position);
+            Interceptions++;
             BulletHits++;
+            UpdateInterceptionStats(position);
         }
 
         public void ReportBulletFired()
@@ -62,7 +68,12 @@ namespace Scenes.Auction
 
         public void ReportFlakFired()
         {
-            throw new NotImplementedException();
+        }
+
+        public void ReportFlakInterception(Vector3 position)
+        {
+            Interceptions++;
+            UpdateInterceptionStats(position);
         }
 
         private void Update()

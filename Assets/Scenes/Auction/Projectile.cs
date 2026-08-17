@@ -24,7 +24,7 @@ namespace Scenes.Auction
             set => _body.linearVelocity = value;
         }
 
-        private readonly HashSet<Bullet> _bullets = new();
+        private readonly HashSet<BaseDefenceProjectile> _bullets = new();
         public int AttachedBulletsCount => _bullets.Count;
 
         private void Awake()
@@ -50,7 +50,7 @@ namespace Scenes.Auction
             _bullets.RemoveWhere(DistanceIsGreater);
         }
 
-        private bool DistanceIsGreater(Bullet bullet)
+        private bool DistanceIsGreater(BaseDefenceProjectile bullet)
         {
             return bullet.DistanceFromOrigin > DistanceFromOrigin + 1;
         }
@@ -61,7 +61,18 @@ namespace Scenes.Auction
 
             if (Hitpoints <= 0)
             {
-                Statistics.ReportInterception(transform.position);
+                Statistics.ReportLaserInterception(transform.position);
+                DestroySelf();
+            }
+        }
+
+        public void FlakDamage(float damage)
+        {
+            Hitpoints -= damage;
+
+            if (Hitpoints <= 0)
+            {
+                Statistics.ReportFlakInterception(transform.position);
                 DestroySelf();
             }
         }
@@ -73,12 +84,12 @@ namespace Scenes.Auction
             Destroy(gameObject);
         }
 
-        public void AddBullet(Bullet go)
+        public void AddBullet(BaseDefenceProjectile go)
         {
             _bullets.Add(go);
         }
 
-        public void RemoveBullet(Bullet go)
+        public void RemoveBullet(BaseDefenceProjectile go)
         {
             _bullets.Remove(go);
         }

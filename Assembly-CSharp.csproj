@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scenes\Auction\ProjectileStatistics.cs" />
     <Compile Include="Assets\Scenes\Auction\ParticleSystemSelfDestruct.cs" />
     <Compile Include="Assets\Extensions\VectorHelpers.cs" />
+    <Compile Include="Assets\Scenes\Auction\AoeDamageSphere.cs" />
     <Compile Include="Assets\Scenes\Auction\FlakManager.cs" />
     <Compile Include="Assets\Scenes\Auction\BaseWeaponSystem.cs" />
     <Compile Include="Assets\Scenes\Auction\FlakGun.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Assets\Scenes\Auction\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scenes\Auction\Gun.cs" />
     <Compile Include="Assets\Scenes\Auction\Projectile.cs" />
+    <Compile Include="Assets\Scenes\Auction\BaseDefenceProjectile.cs" />
+    <Compile Include="Assets\Scenes\Auction\FlakShell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

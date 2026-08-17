@@ -7,7 +7,7 @@ namespace Scenes.Auction
     public class FlakManager
         : MonoBehaviour
     {
-        public Bullet BulletPrefab;
+        public FlakShell BulletPrefab;
 
         public float StdDevSpreadDegrees = 0.5f;
         private readonly System.Random _rng = new();
@@ -30,7 +30,7 @@ namespace Scenes.Auction
             vel = vel.SpreadVelocity(_rng, StdDevSpreadDegrees);
 
             var b = Instantiate(BulletPrefab, pos, Quaternion.identity);
-            b.Init(vel, target);
+            b.Init(vel, target, intercept.Value);
         }
     }
 }

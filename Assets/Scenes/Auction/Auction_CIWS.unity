@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser PDC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4839761019633605421, guid: 7136183e29449c344ae2594a2064c4de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -381,6 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser PDC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4839761019633605421, guid: 7136183e29449c344ae2594a2064c4de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -453,6 +461,10 @@ PrefabInstance:
     - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
       propertyPath: m_Name
       value: Gun PDC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626395226520788991, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
       propertyPath: BulletSpeed
@@ -660,6 +672,10 @@ PrefabInstance:
     - target: {fileID: 4839761019633605421, guid: 7136183e29449c344ae2594a2064c4de, type: 3}
       propertyPath: m_Name
       value: Laser PDC (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839761019633605421, guid: 7136183e29449c344ae2594a2064c4de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -870,6 +886,10 @@ PrefabInstance:
     - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
       propertyPath: m_Name
       value: Gun PDC (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626395226520788991, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
       propertyPath: BulletSpeed
@@ -1498,6 +1518,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5460937678693963495, guid: 0473a52a3c78a6041b48e9d325046207, type: 3}
   m_PrefabInstance: {fileID: 1284484321}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284484323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7139968919963008993, guid: 0473a52a3c78a6041b48e9d325046207, type: 3}
+  m_PrefabInstance: {fileID: 1284484321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4f5cc2c50ec3a4a82c6383eb5813b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scenes.Auction.FlakGun
 --- !u!1 &1308993125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser PDC (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4839761019633605421, guid: 7136183e29449c344ae2594a2064c4de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2026,6 +2061,7 @@ GameObject:
   - component: {fileID: 1679687726}
   - component: {fileID: 1679687727}
   - component: {fileID: 1679687728}
+  - component: {fileID: 1679687729}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Player
@@ -2078,10 +2114,10 @@ MonoBehaviour:
   Period: 1
   Radius: 1000
   MinSpeed: 5
-  MaxSpeed: 150
-  BurstInterval: 5
-  BurstCount: 25
-  BurstSpread: 25
+  MaxSpeed: 100
+  BurstInterval: 7.5
+  BurstCount: 15
+  BurstSpread: 44
   PerBulletPenalty: 0.1
   Statistics: {fileID: 1679687727}
   Prefab: {fileID: 6673844347048960537, guid: d211e5b15a0a17747a81d6216a1d7514, type: 3}
@@ -2094,6 +2130,8 @@ MonoBehaviour:
   - {fileID: 380329994}
   - {fileID: 1626840691}
   - {fileID: 2143316632}
+  - {fileID: 649517338500210419}
+  - {fileID: 1284484323}
 --- !u!114 &1679687727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,6 +2170,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scenes.Auction.BulletManager
   BulletPrefab: {fileID: -780363609399368338, guid: 249cdbc9622560a40ba711aa868f633a, type: 3}
   StdDevSpreadDegrees: 0.5
+--- !u!114 &1679687729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679687724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9255a1ee7b78d8741ae4c04ab5c8e551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scenes.Auction.FlakManager
+  BulletPrefab: {fileID: 6641806086107793555, guid: a80a5335d3823bd4b80868abe6e8ca75, type: 3}
+  StdDevSpreadDegrees: 1
 --- !u!1 &1906556441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,6 +2725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun PDC (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5626395226520788991, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
       propertyPath: BulletSpeed
       value: 25
@@ -2759,6 +2815,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0473a52a3c78a6041b48e9d325046207, type: 3}
+--- !u!114 &649517338500210419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7139968919963008993, guid: 0473a52a3c78a6041b48e9d325046207, type: 3}
+  m_PrefabInstance: {fileID: 649517338500210418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4f5cc2c50ec3a4a82c6383eb5813b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scenes.Auction.FlakGun
 --- !u!4 &1334179057670937498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1632211196399941516, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
@@ -2831,6 +2898,10 @@ PrefabInstance:
     - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
       propertyPath: m_Name
       value: Gun PDC (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681735907334706283, guid: 27fafff06e42f3f4ba48d37d62a79f70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

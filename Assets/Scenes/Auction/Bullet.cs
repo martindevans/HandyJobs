@@ -4,13 +4,10 @@ using UnityEngine;
 namespace Scenes.Auction
 {
     public class Bullet
-        : MonoBehaviour
+        : BaseDefenceProjectile
     {
-        public Rigidbody RigidBody;
         public Projectile Target;
         public ProjectileStatistics Statistics;
-
-        public float DistanceFromOrigin;
 
         public void Init(float3 vel, Projectile target)
         {
@@ -21,9 +18,9 @@ namespace Scenes.Auction
                 target.AddBullet(this);
         }
 
-        private void Update()
+        protected override void Update()
         {
-            DistanceFromOrigin = RigidBody.position.magnitude;
+            base.Update();
 
             if (DistanceFromOrigin > 1000)
             {
