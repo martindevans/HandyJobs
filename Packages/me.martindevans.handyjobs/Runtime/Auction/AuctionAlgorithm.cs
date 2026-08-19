@@ -15,7 +15,7 @@ namespace Auction
         /// <summary>
         /// Solves an assignment problem with an auction.
         ///
-        /// values[agent * count + job] = value of assigning agent to job.
+        /// values[agent * job_count + job] = value of assigning agent to job.
         ///
         /// Returns:
         /// assignment[agent] = job
