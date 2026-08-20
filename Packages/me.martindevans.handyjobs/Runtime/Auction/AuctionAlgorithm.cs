@@ -150,6 +150,12 @@ namespace Auction
                 }
             }
 
+            /// <summary>
+            /// Pick a random unassigned worker and remove it from the list
+            /// </summary>
+            /// <param name="unassigned"></param>
+            /// <param name="rng"></param>
+            /// <returns></returns>
             private static int PickUnassigned(NativeList<int> unassigned, ref Unity.Mathematics.Random rng)
             {
                 var idx = rng.NextInt(0, unassigned.Length);
@@ -160,7 +166,8 @@ namespace Auction
 
             private (int best, float bestValue, float secondValue) PickBestJob(int agent, NativeArray<float> prices, NativeArray<int> sortedOrder)
             {
-                var slice = sortedOrder.Slice(agent * _jobCount, _jobCount);
+                // Get a list of job IDs, ordered by preference for this agent
+                var sortedSlice = sortedOrder.Slice(agent * _jobCount, _jobCount);
 
                 var bestIdx = -1;
                 var bestValue = float.NegativeInfinity;
@@ -170,7 +177,7 @@ namespace Auction
 
                 for (var i = 0; i < _jobCount; i++)
                 {
-                    var job = slice[i];
+                    var job = sortedSlice[i];
                     var value = _values[offset + job];
 
                     // Early exit: Jobs are sorted in descending order of value, and prices are always positive.

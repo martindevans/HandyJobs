@@ -61,7 +61,9 @@
     <Analyzer Include="D:\Unity\6000.4.6f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeArrayExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Auction\AuctionAlgorithm.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeSliceExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\PrefixSumExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\SpanExtensions.cs" />
   </ItemGroup>
