@@ -61,8 +61,17 @@
     <Analyzer Include="D:\Unity\6000.4.6f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobSetCapacityExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobClearExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobKeyValuePairArrayExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFindMinimumIndexExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillRandomExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\PrefixSum\PrefixSumTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReadIndexExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Auction\AuctionTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobParallelHashSetToListExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReverseExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\me.martindevans.handyjobs\Tests\HandyJobs.Tests.asmdef" />
@@ -1142,6 +1151,10 @@
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

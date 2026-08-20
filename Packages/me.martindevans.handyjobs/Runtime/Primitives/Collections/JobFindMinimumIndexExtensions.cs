@@ -214,7 +214,12 @@ namespace me.martindevans.handyjobs.Primitives.Collections
 
                 unsafe
                 {
-                    var itemsPtr = (T*)_items.GetUnsafeReadOnlyPtr();
+                    // Construct a span than we can take references to.
+                    // MUST NOT mutate this span, or any references into it!
+                    var itemsPtr = new Span<T>(
+                        _items.GetUnsafeReadOnlyPtr(),
+                        _items.Length
+                    );
 
                     // Assume index 0 is the smallest item
                     ref var bestItem = ref itemsPtr[0];
@@ -225,8 +230,6 @@ namespace me.martindevans.handyjobs.Primitives.Collections
                     {
                         var idx = _threadMinimums[i];
                         if (idx < 0)
-                            continue;
-                        if (idx >= _items.Length)
                             continue;
 
                         ref var item = ref itemsPtr[idx];

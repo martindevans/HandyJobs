@@ -4,7 +4,7 @@ using Unity.Jobs;
 
 namespace me.martindevans.handyjobs.Primitives.Collections
 {
-    public static class JobParallelHashSetToListDeferredExtensions
+    public static class JobParallelHashSetToListExtensions
     {
         /// <summary>
         /// Copy all of the items from a parallel hash set to a list

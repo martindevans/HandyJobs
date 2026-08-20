@@ -13,7 +13,7 @@ namespace me.martindevans.handyjobs.Primitives.Collections
         /// <param name="list"></param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
-        public static JobHandle Clear<T>(NativeList<T> list, JobHandle dependsOn)
+        public static JobHandle Clear<T>(this NativeList<T> list, JobHandle dependsOn)
             where T : unmanaged
         {
             return new ClearListJob<T>(list).Schedule(dependsOn);
@@ -44,7 +44,7 @@ namespace me.martindevans.handyjobs.Primitives.Collections
         /// <param name="set"></param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
-        public static JobHandle Clear<T>(NativeHashSet<T> set, JobHandle dependsOn)
+        public static JobHandle Clear<T>(this NativeHashSet<T> set, JobHandle dependsOn)
             where T : unmanaged, IEquatable<T>
         {
             return new ClearSetJob<T>(set).Schedule(dependsOn);
@@ -75,7 +75,7 @@ namespace me.martindevans.handyjobs.Primitives.Collections
         /// <param name="list"></param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
-        public static JobHandle Clear<T>(NativeQueue<T> list, JobHandle dependsOn)
+        public static JobHandle Clear<T>(this NativeQueue<T> list, JobHandle dependsOn)
             where T : unmanaged
         {
             return new ClearQueueJob<T>(list).Schedule(dependsOn);
@@ -106,7 +106,7 @@ namespace me.martindevans.handyjobs.Primitives.Collections
         /// <param name="set"></param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
-        public static JobHandle Clear<T>(NativeParallelHashSet<T> set, JobHandle dependsOn)
+        public static JobHandle Clear<T>(this NativeParallelHashSet<T> set, JobHandle dependsOn)
             where T : unmanaged, IEquatable<T>
         {
             return new ClearParallelSetJob<T>(set).Schedule(dependsOn);
@@ -138,7 +138,7 @@ namespace me.martindevans.handyjobs.Primitives.Collections
         /// <param name="set"></param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
-        public static JobHandle Clear<K, V>(NativeHashMap<K, V> set, JobHandle dependsOn)
+        public static JobHandle Clear<K, V>(this NativeHashMap<K, V> set, JobHandle dependsOn)
             where K : unmanaged, IEquatable<K>
             where V : unmanaged
         {
@@ -172,7 +172,7 @@ namespace me.martindevans.handyjobs.Primitives.Collections
         /// <param name="set"></param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
-        public static JobHandle Clear<K, V>(NativeParallelHashMap<K, V> set, JobHandle dependsOn)
+        public static JobHandle Clear<K, V>(this NativeParallelHashMap<K, V> set, JobHandle dependsOn)
             where K : unmanaged, IEquatable<K>
             where V : unmanaged
         {

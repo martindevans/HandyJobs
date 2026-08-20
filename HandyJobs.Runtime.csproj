@@ -61,11 +61,11 @@
     <Analyzer Include="D:\Unity\6000.4.6f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobParallelHashSetToListDeferredExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Mathematics\PrefixSumExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeArrayExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobFillExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobFillRandomExtensions.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobParallelHashSetToListExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Auction\AuctionAlgorithm.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobReverseExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobKeyValuePairArrayExtensions.cs" />
@@ -651,6 +651,10 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Library\PackageCache\com.unity.collections@65f499a3cc26\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ReportGeneratorMerged">
+      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@19a841221620\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
