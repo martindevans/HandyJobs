@@ -64,6 +64,7 @@
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobSetCapacityExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobClearExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobKeyValuePairArrayExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobDrainQueueExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFindMinimumIndexExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillRandomExtensionsTests.cs" />

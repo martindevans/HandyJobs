@@ -61,6 +61,7 @@
     <Analyzer Include="D:\Unity\6000.4.6f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobDrainQueueExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Mathematics\PrefixSumExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeArrayExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobFillExtensions.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\IComparableExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobSetCapacityExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobFindMinimumIndexExtensions.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeListExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeSliceExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobClearExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobReadIndexExtensions.cs" />
@@ -641,6 +643,10 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@d8c07649098d\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ReportGeneratorMerged">
+      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@19a841221620\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.IO.Hashing">
       <HintPath>Library\PackageCache\com.unity.collections@65f499a3cc26\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
@@ -651,10 +657,6 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Library\PackageCache\com.unity.collections@65f499a3cc26\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ReportGeneratorMerged">
-      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@19a841221620\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
