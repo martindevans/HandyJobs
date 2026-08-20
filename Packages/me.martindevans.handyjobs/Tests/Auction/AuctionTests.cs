@@ -1,6 +1,6 @@
-using Auction;
 using NUnit.Framework;
 using System;
+using me.martindevans.handyjobs.Auction;
 using Unity.Collections;
 
 namespace Tests.Auction

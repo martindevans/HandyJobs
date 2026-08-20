@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using Primitives;
 using System;
+using me.martindevans.handyjobs.Primitives.Mathematics;
 using Unity.Collections;
 
 namespace Tests.PrefixSum

@@ -1,7 +1,7 @@
 ﻿using System;
 using Unity.Mathematics;
 
-namespace Extensions
+namespace me.martindevans.handyjobs.Extensions
 {
     public static class SpanExtensions
     {
@@ -89,6 +89,50 @@ namespace Extensions
         public static int Sum(this Span<int> values)
         {
             return values.AsReadOnlySpan().Sum();
+        }
+
+        /// <summary>
+        /// Get index of max value
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public static int IdxMax<T>(this ReadOnlySpan<T> values)
+            where T : IComparable<T>
+        {
+            var idx = 0;
+            var max = values[0];
+            for (var i = 1; i < values.Length; i++)
+            {
+                if (values[i].IsGreaterThan(max))
+                {
+                    max = values[i];
+                    idx = i;
+                }
+            }
+
+            return idx;
+        }
+
+        /// <summary>
+        /// Get index of min value
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public static int IdxMin<T>(this ReadOnlySpan<T> values)
+            where T : IComparable<T>
+        {
+            var idx = 0;
+            var min = values[0];
+            for (var i = 1; i < values.Length; i++)
+            {
+                if (values[i].IsLessThan(min))
+                {
+                    min = values[i];
+                    idx = i;
+                }
+            }
+
+            return idx;
         }
     }
 }

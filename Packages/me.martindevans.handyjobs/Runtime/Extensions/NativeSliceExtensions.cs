@@ -1,6 +1,6 @@
 ﻿using Unity.Collections;
 
-namespace Extensions
+namespace me.martindevans.handyjobs.Extensions
 {
     public static class NativeSliceExtensions
     {
