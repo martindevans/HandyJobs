@@ -820,6 +820,22 @@ namespace Tests.Extensions
             Assert.AreEqual(2, arr.AsReadOnlySpan().IdxMax());
         }
 
+        [Test]
+        public void IdxMax()
+        {
+            var span = new[] { 1, 2, 7, 3, 1, 4 }.AsReadOnlySpan();
+            var idx = span.IdxMax();
+            Assert.AreEqual(2, idx);
+        }
+
+        [Test]
+        public void IdxMaxDuplicate()
+        {
+            var span = new[] { 1, 2, 7, 3, 7, 4 }.AsReadOnlySpan();
+            var idx = span.IdxMax();
+            Assert.AreEqual(2, idx);
+        }
+
         #endregion
 
         #region IdxMin
@@ -886,6 +902,30 @@ namespace Tests.Extensions
             var arr = new[] { "cherry", "banana", "apple" };
 
             Assert.AreEqual(2, arr.AsReadOnlySpan().IdxMin());
+        }
+
+        [Test]
+        public void IdxMin()
+        {
+            var span = new[] { 1, 2, 7, 3, -2, 2, 4 }.AsReadOnlySpan();
+            var idx = span.IdxMin();
+            Assert.AreEqual(4, idx);
+        }
+
+        [Test]
+        public void IdxMinDuplicate()
+        {
+            var span = new[] { 1, 2, 7, 1, 7, 4 }.AsReadOnlySpan();
+            var idx = span.IdxMin();
+            Assert.AreEqual(0, idx);
+        }
+
+        [Test]
+        public void IdxMinDouble()
+        {
+            var span = new double[] { 1, 2, 7, 3, -2, 2, 4 }.AsReadOnlySpan();
+            var idx = span.IdxMin();
+            Assert.AreEqual(4, idx);
         }
 
         #endregion

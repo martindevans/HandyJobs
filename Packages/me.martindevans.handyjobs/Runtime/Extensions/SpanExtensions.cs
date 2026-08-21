@@ -93,6 +93,7 @@ namespace me.martindevans.handyjobs.Extensions
             return values.AsReadOnlySpan().Sum();
         }
 
+
         /// <summary>
         /// Sum up values
         /// </summary>
@@ -155,6 +156,7 @@ namespace me.martindevans.handyjobs.Extensions
         {
             return values.AsReadOnlySpan().Sum();
         }
+
 
         /// <summary>
         /// Sum up values
