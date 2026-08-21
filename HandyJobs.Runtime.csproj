@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobDrainQueueExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Mathematics\PrefixSumExtensions.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobReadIndicesExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Extensions\NativeArrayExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobFillExtensions.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Runtime\Primitives\Collections\JobFillRandomExtensions.cs" />

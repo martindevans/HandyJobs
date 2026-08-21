@@ -68,9 +68,12 @@
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFindMinimumIndexExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillRandomExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Extensions\IComparableExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Extensions\SpanExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\PrefixSum\PrefixSumTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReadIndexExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Auction\AuctionTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReadIndicesExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobParallelHashSetToListExtensionsTests.cs" />
     <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReverseExtensionsTests.cs" />
   </ItemGroup>
