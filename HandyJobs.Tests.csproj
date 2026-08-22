@@ -61,24 +61,24 @@
     <Analyzer Include="D:\Unity\6000.4.6f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobSetCapacityExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobClearExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobKeyValuePairArrayExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobDrainQueueExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFindMinimumIndexExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobFillRandomExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Extensions\IComparableExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Extensions\SpanExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\PrefixSum\PrefixSumTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReadIndexExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Auction\AuctionTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReadIndicesExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobParallelHashSetToListExtensionsTests.cs" />
-    <Compile Include="Packages\me.martindevans.handyjobs\Tests\Collections\JobReverseExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobFillExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobParallelHashSetToListExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Auction\AuctionTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobFindMinimumIndexExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobReadIndexExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobReverseExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\PrefixSum\PrefixSumTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobReadIndicesExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobKeyValuePairArrayExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobSetCapacityExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobClearExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobFillRandomExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Extensions\IComparableExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Collections\JobDrainQueueExtensionsTests.cs" />
+    <Compile Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\Extensions\SpanExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Packages\me.martindevans.handyjobs\Tests\HandyJobs.Tests.asmdef" />
+    <None Include="Packages\me.martindevans.handyjobs\HandyJobs\Tests\HandyJobs.Tests.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

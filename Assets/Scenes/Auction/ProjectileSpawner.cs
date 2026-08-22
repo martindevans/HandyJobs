@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using me.martindevans.handyjobs.Auction;
+using Packages.HandyJobs.Runtime.Auction;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
