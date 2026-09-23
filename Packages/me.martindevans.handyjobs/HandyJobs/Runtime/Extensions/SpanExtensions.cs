@@ -1,5 +1,4 @@
 ﻿using System;
-using Unity.Burst;
 using Unity.Mathematics;
 
 namespace Packages.HandyJobs.Runtime.Extensions
@@ -267,17 +266,12 @@ namespace Packages.HandyJobs.Runtime.Extensions
             return idx;
         }
         #endregion
-    }
 
-    [BurstCompile(FloatPrecision.High, FloatMode.Fast)]
-    public static class SpanExtensionsBurstFast
-    {
         /// <summary>
         /// Sum squares of values
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
-        [BurstCompile]
         public static float SumSqr(this Span<float> values)
         {
             return values.AsReadOnlySpan().SumSqr();
@@ -288,7 +282,6 @@ namespace Packages.HandyJobs.Runtime.Extensions
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
-        [BurstCompile]
         public static float SumSqr(this ReadOnlySpan<float> values)
         {
             if (values.Length == 0)
@@ -321,7 +314,7 @@ namespace Packages.HandyJobs.Runtime.Extensions
                     for (var j = 0; j < vectorCount; j++)
                     {
                         var value4 = values4Ptr[j];
-                        SpanExtensionsBurstStrict.NeumaierSumStep(value4 * value4, ref simdSum, ref simdComp);
+                        NeumaierSumStep(value4 * value4, ref simdSum, ref simdComp);
                     }
 
                     var finalSum = 0f;
@@ -329,20 +322,20 @@ namespace Packages.HandyJobs.Runtime.Extensions
 
                     // Horizontal reduction of SIMD lanes
                     for (var lane = 0; lane < 4; lane++)
-                        SpanExtensionsBurstStrict.NeumaierSumStep(simdSum[lane] + simdComp[lane], ref finalSum, ref finalComp);
+                        NeumaierSumStep(simdSum[lane] + simdComp[lane], ref finalSum, ref finalComp);
 
                     // Add on unaligned prefix
                     for (var i = 0; i < elementsToAlign; i++)
                     {
                         var value = valuesPtr[i];
-                        SpanExtensionsBurstStrict.NeumaierSumStep(value * value, ref finalSum, ref finalComp);
+                        NeumaierSumStep(value * value, ref finalSum, ref finalComp);
                     }
 
                     // Add on suffix
                     for (var i = elementsToAlign + vectorCount * 4; i < count; i++)
                     {
                         var value = valuesPtr[i];
-                        SpanExtensionsBurstStrict.NeumaierSumStep(value * value, ref finalSum, ref finalComp);
+                        NeumaierSumStep(value * value, ref finalSum, ref finalComp);
                     }
 
                     return finalSum + finalComp;
@@ -358,7 +351,6 @@ namespace Packages.HandyJobs.Runtime.Extensions
         /// <param name="mean"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        [BurstCompile]
         public static float Variance(this ReadOnlySpan<float> values, ReadOnlySpan<float> probabilities, float mean)
         {
             if (values.Length != probabilities.Length)
@@ -371,7 +363,7 @@ namespace Packages.HandyJobs.Runtime.Extensions
             {
                 var delta = values[i] - mean;
                 var v = probabilities[i] * delta * delta;
-                SpanExtensionsBurstStrict.NeumaierSumStep(v, ref sum, ref compensator);
+                NeumaierSumStep(v, ref sum, ref compensator);
             }
 
             return sum + compensator;
@@ -385,23 +377,17 @@ namespace Packages.HandyJobs.Runtime.Extensions
         /// <param name="mean"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        [BurstCompile]
         public static float StandardDeviation(this ReadOnlySpan<float> values, Span<float> probabilities, float mean)
         {
             return math.sqrt(values.Variance(probabilities, mean));
         }
-    }
 
-    [BurstCompile(FloatPrecision.High, FloatMode.Strict)]
-    public static class SpanExtensionsBurstStrict
-    {
         #region Neumaier Sum
         /// <summary>
         /// Sum up input, using Neumaier summation to compensate for a mix of very large and very small values
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
-        [BurstCompile]
         public static float NeumaierSum(this Span<float> values)
         {
             return values.AsReadOnlySpan().NeumaierSum();
@@ -412,7 +398,6 @@ namespace Packages.HandyJobs.Runtime.Extensions
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
-        [BurstCompile]
         public static float NeumaierSum(this ReadOnlySpan<float> values)
         {
             if (values.Length == 0)
@@ -465,7 +450,6 @@ namespace Packages.HandyJobs.Runtime.Extensions
             }
         }
 
-        [BurstCompile]
         public static void NeumaierSumStep(float4 value, ref float4 sum, ref float4 compensation)
         {
             var t = sum + value;
@@ -479,7 +463,6 @@ namespace Packages.HandyJobs.Runtime.Extensions
             sum = t;
         }
 
-        [BurstCompile]
         public static void NeumaierSumStep(float value, ref float sum, ref float compensation)
         {
             var t = sum + value;
