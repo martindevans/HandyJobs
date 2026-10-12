@@ -166,6 +166,22 @@ namespace HandyJobs.Tests.Collections
         }
 
         [Test]
+        public void FindMinIndex_DoesNotMutateInput()
+        {
+            var expected = new[] { 4, 3, 1, 5, 2 };
+            var input = new NativeArray<int>(expected, Allocator.Persistent);
+            var output = new NativeReference<int>(Allocator.Persistent);
+
+            input.FindMinIndex(output).Complete();
+
+            Assert.AreEqual(2, output.Value);
+            Assert.That(input.ToArray(), Is.EqualTo(expected), "FindMinIndex must not mutate the input array");
+
+            output.Dispose();
+            input.Dispose();
+        }
+
+        [Test]
         public void FindMinIndex_AllEqualValues_ReturnsFirstIndex()
         {
             var input = new NativeArray<int>(new[] { 7, 7, 7, 7 }, Allocator.Persistent);

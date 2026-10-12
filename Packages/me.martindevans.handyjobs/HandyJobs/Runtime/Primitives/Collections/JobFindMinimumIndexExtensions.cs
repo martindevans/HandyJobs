@@ -147,8 +147,9 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
         {
             [ReadOnly] private readonly NativeArray<T> _input;
 
-            // ReSharper disable once FieldCanBeMadeReadOnly.Local
+#pragma warning disable IDE0044
             [NativeDisableParallelForRestriction] private NativeArray<int> _threadMinimums;
+#pragma warning restore IDE0044
 
             public FindSingleMinimaJob(NativeArray<T> input, NativeArray<int> threadMinimums)
             {
@@ -222,7 +223,7 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
                     );
 
                     // Assume index 0 is the smallest item
-                    ref var bestItem = ref itemsPtr[0];
+                    ref readonly var bestItem = ref itemsPtr[0];
                     var bestIdx = 0;
 
                     // Loop over the best item found by each thread
@@ -240,7 +241,7 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
                         if (cmp > 0)
                         {
                             // New item is smaller
-                            bestItem = item;
+                            bestItem = ref item;
                             bestIdx = idx;
                         }
                         else if (cmp == 0)
@@ -248,7 +249,7 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
                             // new item is equal, keep smallest index
                             if (idx < bestIdx)
                             {
-                                bestItem = item;
+                                bestItem = ref item;
                                 bestIdx = idx;
                             }
                         }
