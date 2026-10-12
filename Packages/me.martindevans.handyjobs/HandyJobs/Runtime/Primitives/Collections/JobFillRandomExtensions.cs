@@ -1,5 +1,6 @@
 ﻿using Unity.Collections;
 using Unity.Jobs;
+using Unity.Mathematics;
 
 namespace Packages.HandyJobs.Runtime.Primitives.Collections
 {
@@ -49,13 +50,13 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
             {
                 _dimensions = dimensions;
                 _seed = seed;
-                _min = min;
-                _max = max;
+                _min = math.min(min, max);
+                _max = math.max(min, max);
             }
 
             public void Execute(int startIndex, int count)
             {
-                var rng = Unity.Mathematics.Random.CreateFromIndex(Seed(_seed, startIndex));
+                var rng = Random.CreateFromIndex(Seed(_seed, startIndex));
 
                 for (var i = 0; i < count; i++)
                     _dimensions[startIndex + i] = rng.NextDouble(_min, _max);
@@ -104,13 +105,13 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
             {
                 _dimensions = dimensions;
                 _seed = seed;
-                _min = min;
-                _max = max;
+                _min = math.min(min, max);
+                _max = math.max(min, max);
             }
 
             public void Execute(int startIndex, int count)
             {
-                var rng = Unity.Mathematics.Random.CreateFromIndex(Seed(_seed, startIndex));
+                var rng = Random.CreateFromIndex(Seed(_seed, startIndex));
 
                 for (var i = 0; i < count; i++)
                     _dimensions[startIndex + i] = rng.NextFloat(_min, _max);
@@ -159,13 +160,13 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
             {
                 _dimensions = dimensions;
                 _seed = seed;
-                _min = min;
-                _max = max;
+                _min = math.min(min, max);
+                _max = math.max(min, max);
             }
 
             public void Execute(int startIndex, int count)
             {
-                var rng = Unity.Mathematics.Random.CreateFromIndex(Seed(_seed, startIndex));
+                var rng = Random.CreateFromIndex(Seed(_seed, startIndex));
 
                 for (var i = 0; i < count; i++)
                     _dimensions[startIndex + i] = rng.NextInt(_min, _max);

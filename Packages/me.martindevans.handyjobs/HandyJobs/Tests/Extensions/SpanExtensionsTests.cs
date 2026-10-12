@@ -757,6 +757,14 @@ namespace HandyJobs.Tests.Extensions
         #region IdxMax
 
         [Test]
+        public void IdxMax_EmptySpan_ReturnsNegativeOne()
+        {
+            var arr = new int[0];
+
+            Assert.AreEqual(-1, arr.AsReadOnlySpan().IdxMax());
+        }
+
+        [Test]
         public void IdxMax_MaxAtStart()
         {
             var arr = new[] { 9, 1, 2, 3 };
@@ -839,6 +847,14 @@ namespace HandyJobs.Tests.Extensions
         #endregion
 
         #region IdxMin
+
+        [Test]
+        public void IdxMin_EmptySpan_ReturnsNegativeOne()
+        {
+            var arr = new int[0];
+
+            Assert.AreEqual(-1, arr.AsReadOnlySpan().IdxMin());
+        }
 
         [Test]
         public void IdxMin_MinAtStart()

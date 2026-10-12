@@ -34,6 +34,8 @@ namespace Packages.HandyJobs.Runtime.Auction
                 throw new ArgumentException("Values array is the wrong size", nameof(values));
             if (assignment.Length != agentCount)
                 throw new ArgumentException("Assignment array is the wrong size", nameof(assignment));
+            if (epsilon <= 0)
+                throw new ArgumentException("Epsilon must be greater than zero", nameof(epsilon));
 
             // Initialise seed
             if (!seed.HasValue)

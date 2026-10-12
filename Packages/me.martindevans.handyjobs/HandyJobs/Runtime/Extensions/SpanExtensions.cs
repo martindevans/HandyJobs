@@ -226,18 +226,23 @@ namespace Packages.HandyJobs.Runtime.Extensions
         /// Get index of max value
         /// </summary>
         /// <param name="values"></param>
-        /// <returns></returns>
+        /// <returns>The index of the largest value, if two are equal it returns the first, -1 when the span is empty.</returns>
         public static int IdxMax<T>(this ReadOnlySpan<T> values)
             where T : IComparable<T>
         {
-            var idx = 0;
-            var max = values[0];
-            for (var i = 1; i < values.Length; i++)
+            var idx = -1;
+
+            if (values.Length > 0)
             {
-                if (values[i].IsGreaterThan(max))
+                idx = 0;
+                var max = values[0];
+                for (var i = 1; i < values.Length; i++)
                 {
-                    max = values[i];
-                    idx = i;
+                    if (values[i].IsGreaterThan(max))
+                    {
+                        max = values[i];
+                        idx = i;
+                    }
                 }
             }
 
@@ -248,18 +253,23 @@ namespace Packages.HandyJobs.Runtime.Extensions
         /// Get index of min value
         /// </summary>
         /// <param name="values"></param>
-        /// <returns></returns>
+        /// <returns>The index of the smallest value, if two are equal it returns the first, -1 when the span is empty.</returns>
         public static int IdxMin<T>(this ReadOnlySpan<T> values)
             where T : IComparable<T>
         {
-            var idx = 0;
-            var min = values[0];
-            for (var i = 1; i < values.Length; i++)
+            var idx = -1;
+
+            if (values.Length > 0)
             {
-                if (values[i].IsLessThan(min))
+                idx = 0;
+                var min = values[0];
+                for (var i = 1; i < values.Length; i++)
                 {
-                    min = values[i];
-                    idx = i;
+                    if (values[i].IsLessThan(min))
+                    {
+                        min = values[i];
+                        idx = i;
+                    }
                 }
             }
 

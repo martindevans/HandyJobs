@@ -11,7 +11,7 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
         /// </summary>
         /// <typeparam name="T0"></typeparam>
         /// <param name="source0">Source to read items from</param>
-        /// <param name="indices">Indices to copy from source to output</param>
+        /// <param name="indices">Indices to copy from source to output. If the index is out of range nothing is written.</param>
         /// <param name="output">List to append items to</param>
         /// <param name="dependsOn"></param>
         /// <returns></returns>
@@ -45,7 +45,12 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
             public void Execute()
             {
                 foreach (var idx in _indices)
+                {
+                    if (idx < 0 || idx >= _source.Length)
+                        continue;
+
                     _results.Add(_source[idx]);
+                }
             }
         }
 
@@ -54,7 +59,7 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
         /// </summary>
         /// <typeparam name="T0"></typeparam>
         /// <typeparam name="T1"></typeparam>
-        /// <param name="indices">Indices to copy from source to output</param>
+        /// <param name="indices">Indices to copy from source to output. If the either index is out of range nothing is written.</param>
         /// <param name="source0">Source to read items from</param>
         /// <param name="source1">Source to read items from</param>
         /// <param name="output">List to append items to</param>
@@ -101,7 +106,14 @@ namespace Packages.HandyJobs.Runtime.Primitives.Collections
             public void Execute()
             {
                 foreach (var (i0, i1) in _indices)
+                {
+                    if (i0 < 0 || i0 >= _src0.Length)
+                        continue;
+                    if (i1 < 0 || i1 >= _src2.Length)
+                        continue;
+
                     _results.Add((_src0[i0], _src2[i1]));
+                }
             }
         }
     }
