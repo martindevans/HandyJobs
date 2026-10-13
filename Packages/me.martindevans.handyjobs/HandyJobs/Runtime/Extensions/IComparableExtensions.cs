@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Packages.HandyJobs.Runtime.Extensions
+namespace HandyJobs.Runtime.Extensions
 {
     public static class IComparableExtensions
     {

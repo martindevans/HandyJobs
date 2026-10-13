@@ -1,5 +1,5 @@
+using HandyJobs.Runtime.Primitives.Collections;
 using NUnit.Framework;
-using Packages.HandyJobs.Runtime.Primitives.Collections;
 using Unity.Collections;
 using Unity.Jobs;
 

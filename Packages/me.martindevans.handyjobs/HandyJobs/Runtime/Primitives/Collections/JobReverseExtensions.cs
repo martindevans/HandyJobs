@@ -3,7 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
-namespace Packages.HandyJobs.Runtime.Primitives.Collections
+namespace HandyJobs.Runtime.Primitives.Collections
 {
     public static class JobReverseExtensions
     {

@@ -1,6 +1,6 @@
 using System;
+using HandyJobs.Runtime.Auction;
 using NUnit.Framework;
-using Packages.HandyJobs.Runtime.Auction;
 using Unity.Collections;
 
 namespace HandyJobs.Tests.Auction

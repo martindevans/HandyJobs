@@ -1,6 +1,6 @@
 ﻿using System;
+using HandyJobs.Runtime.Primitives.Mathematics;
 using NUnit.Framework;
-using Packages.HandyJobs.Runtime.Primitives.Mathematics;
 using Unity.Collections;
 
 namespace HandyJobs.Tests.PrefixSum

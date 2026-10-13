@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
-namespace Packages.HandyJobs.Runtime.Primitives.Mathematics
+namespace HandyJobs.Runtime.Primitives.Mathematics
 {
     /// <summary>
     /// Runs a scan over an array, calculating a prefix sum. I.e. the sum of everything in the array up to that point.

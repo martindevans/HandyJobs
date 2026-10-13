@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
-namespace Packages.HandyJobs.Runtime.Primitives.Collections
+namespace HandyJobs.Runtime.Primitives.Collections
 {
     public static class JobSetCapacityExtensions
     {

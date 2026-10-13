@@ -1,8 +1,8 @@
-﻿using Packages.HandyJobs.Runtime.Extensions;
+﻿using HandyJobs.Runtime.Extensions;
 using Unity.Collections;
 using Unity.Jobs;
 
-namespace Packages.HandyJobs.Runtime.Primitives.Collections
+namespace HandyJobs.Runtime.Primitives.Collections
 {
     public static class JobFillExtensions
     {

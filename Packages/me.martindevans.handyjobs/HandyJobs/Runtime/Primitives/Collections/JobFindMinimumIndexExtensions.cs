@@ -1,12 +1,12 @@
 ﻿using System;
-using Packages.HandyJobs.Runtime.Extensions;
+using HandyJobs.Runtime.Extensions;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Jobs;
 using Unity.Jobs.LowLevel.Unsafe;
 
-namespace Packages.HandyJobs.Runtime.Primitives.Collections
+namespace HandyJobs.Runtime.Primitives.Collections
 {
     [BurstCompile]
     public static class JobFindMinimumIndexExtensions

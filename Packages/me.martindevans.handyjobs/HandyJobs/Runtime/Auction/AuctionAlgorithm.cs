@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
-namespace Packages.HandyJobs.Runtime.Auction
+namespace HandyJobs.Runtime.Auction
 {
     /// <summary>
     /// Assigns workers to jobs, attempting to globally optimised the assignment

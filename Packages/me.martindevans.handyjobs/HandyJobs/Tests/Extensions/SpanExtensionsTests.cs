@@ -1,6 +1,6 @@
 using System;
+using HandyJobs.Runtime.Extensions;
 using NUnit.Framework;
-using Packages.HandyJobs.Runtime.Extensions;
 
 namespace HandyJobs.Tests.Extensions
 {
