@@ -1,10 +1,12 @@
 using System;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobSetCapacityExtensions
     {
         #region NativeParallelHashSet
@@ -82,6 +84,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return dst.SetCapacity<TSetItem, NativeList<TListItem>, TListItem>(src, dependsOn);
         }
 
+        [BurstCompile]
         private struct SetNativeParallelHashSetCapacityFromList<TSetItem, TList, TListItem>
             : IJob
             where TSetItem : unmanaged, IEquatable<TSetItem>

@@ -1,9 +1,11 @@
-﻿using Unity.Collections;
+﻿using Unity.Burst;
+using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobFillRandomExtensions
     {
         private const int DoubleBatchSize = 32;
@@ -38,6 +40,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new DoubleFillRandomJob(array, seed, min, max).Schedule(array.Length, DoubleBatchSize, inputDeps);
         }
 
+        [BurstCompile]
         private struct DoubleFillRandomJob
             : IJobParallelForBatch
         {
@@ -93,6 +96,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new SingleFillRandomJob(array, seed, min, max).Schedule(array.Length, SingleBatchSize, inputDeps);
         }
 
+        [BurstCompile]
         private struct SingleFillRandomJob
             : IJobParallelForBatch
         {
@@ -148,6 +152,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new Int32FillRandomJob(array, seed, min, max).Schedule(array.Length, SingleBatchSize, inputDeps);
         }
 
+        [BurstCompile]
         private struct Int32FillRandomJob
             : IJobParallelForBatch
         {

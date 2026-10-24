@@ -4,6 +4,7 @@ using Unity.Jobs;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobReadIndicesExtensions
     {
         /// <summary>

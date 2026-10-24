@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobKeyValuePairArrayExtensions
     {
         /// <summary>
@@ -22,6 +24,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new CopyKeysToListJob<TKey, TValue>(input, output).Schedule(dependsOn);
         }
 
+        [BurstCompile]
         private struct CopyKeysToListJob<TKey, TValue>
             : IJob
             where TKey : unmanaged
@@ -60,6 +63,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new CopyValuesToListJob<TKey, TValue>(input, output).Schedule(dependsOn);
         }
 
+        [BurstCompile]
         private struct CopyValuesToListJob<TKey, TValue>
             : IJob
             where TKey : unmanaged

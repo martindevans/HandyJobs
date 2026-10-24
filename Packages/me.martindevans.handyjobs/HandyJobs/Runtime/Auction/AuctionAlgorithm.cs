@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -10,6 +11,7 @@ namespace HandyJobs.Runtime.Auction
     /// Assigns workers to jobs, attempting to globally optimised the assignment
     /// such that every worker is assigned to their best job.
     /// </summary>
+    [BurstCompile]
     public static class AuctionAlgorithm
     {
         /// <summary>
@@ -53,6 +55,7 @@ namespace HandyJobs.Runtime.Auction
             return new AuctionJob(values, agentCount, jobCount, assignment, epsilon, seed.Value).Schedule(dependsOn);
         }
 
+        [BurstCompile]
         private struct AuctionJob
             : IJob
         {

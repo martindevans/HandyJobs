@@ -1,9 +1,11 @@
 ﻿using System;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobReadIndexExtensions
     {
         /// <summary>
@@ -36,6 +38,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new ReadIndexJob<T>(index, input.AsDeferredJobArray(), output).Schedule(inputDeps);
         }
 
+        [BurstCompile]
         private struct ReadIndexJob<T>
             : IJob
             where T : unmanaged

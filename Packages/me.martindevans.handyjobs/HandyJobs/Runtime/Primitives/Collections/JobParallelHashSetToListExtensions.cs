@@ -1,9 +1,11 @@
 ﻿using System;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobParallelHashSetToListExtensions
     {
         /// <summary>
@@ -21,6 +23,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
                .Schedule(dependsOn);
         }
 
+        [BurstCompile]
         private struct CopySetToListJob<T>
             : IJob
             where T : unmanaged, IEquatable<T>

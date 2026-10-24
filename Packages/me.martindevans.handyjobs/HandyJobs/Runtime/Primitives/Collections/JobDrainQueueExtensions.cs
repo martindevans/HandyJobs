@@ -1,9 +1,11 @@
 ﻿using HandyJobs.Runtime.Extensions;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobDrainQueueExtensions
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new DrainQueueToListJob<T>(queue, list).Schedule(dependsOn);
         }
 
+        [BurstCompile]
         private struct DrainQueueToListJob<T>
             : IJob
             where T : unmanaged

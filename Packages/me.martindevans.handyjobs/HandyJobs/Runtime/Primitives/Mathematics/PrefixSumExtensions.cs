@@ -8,6 +8,7 @@ namespace HandyJobs.Runtime.Primitives.Mathematics
     /// <summary>
     /// Runs a scan over an array, calculating a prefix sum. I.e. the sum of everything in the array up to that point.
     /// </summary>
+    [BurstCompile]
     public static class PrefixSumExtensions
     {
         private const int BlockSize = 128;

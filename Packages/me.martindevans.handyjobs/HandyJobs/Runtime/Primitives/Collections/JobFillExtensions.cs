@@ -1,9 +1,11 @@
 ﻿using HandyJobs.Runtime.Extensions;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
 namespace HandyJobs.Runtime.Primitives.Collections
 {
+    [BurstCompile]
     public static class JobFillExtensions
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new FillJobArray<T>(array, value).Schedule(inputDeps);
         }
 
+        [BurstCompile]
         private struct FillJobArray<T>
             : IJob
             where T : struct
@@ -55,6 +58,7 @@ namespace HandyJobs.Runtime.Primitives.Collections
             return new FillJobSlice<T>(array, value).Schedule(inputDeps);
         }
 
+        [BurstCompile]
         private struct FillJobSlice<T>
             : IJob
             where T : struct
