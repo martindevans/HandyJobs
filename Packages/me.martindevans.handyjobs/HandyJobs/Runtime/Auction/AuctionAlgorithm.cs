@@ -55,27 +55,6 @@ namespace HandyJobs.Runtime.Auction
             return new AuctionJob(values, agentCount, jobCount, assignment, epsilon, seed.Value);
         }
 
-        /// <summary>
-        /// Solves an assignment problem with an auction.
-        ///
-        /// values[agent * job_count + job] = value of assigning agent to job.
-        ///
-        /// Returns:
-        /// assignment[agent] = job
-        /// </summary>
-        public static JobHandle Solve(
-            NativeArray<float> values,
-            int agentCount,
-            int jobCount,
-            NativeArray<int> assignment,
-            JobHandle dependsOn,
-            float epsilon = 0.0001f,
-            uint? seed = null
-        )
-        {
-            return SolveJob(values, agentCount, jobCount, assignment, epsilon, seed).Schedule(dependsOn);
-        }
-
         [BurstCompile]
         public struct AuctionJob
             : IJob
