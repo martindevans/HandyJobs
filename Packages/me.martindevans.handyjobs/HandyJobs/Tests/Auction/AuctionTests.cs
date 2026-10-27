@@ -2,6 +2,7 @@ using System;
 using HandyJobs.Runtime.Auction;
 using NUnit.Framework;
 using Unity.Collections;
+using Unity.Jobs;
 
 namespace HandyJobs.Tests.Auction
 {
@@ -59,7 +60,7 @@ namespace HandyJobs.Tests.Auction
 
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 3, 3, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 3, assignment).Schedule().Complete();
 
             Assert.AreEqual(2, assignment[0]);
             Assert.AreEqual(1, assignment[1]);
@@ -77,8 +78,10 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(6, Allocator.Persistent);
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            Assert.That(() => AuctionAlgorithm.Solve(values, 3, 3, assignment).Complete(),
-                Throws.InstanceOf<ArgumentException>());
+            Assert.That(
+                () => AuctionAlgorithm.SolveJob(values, 3, 3, assignment).Schedule().Complete(),
+                Throws.InstanceOf<ArgumentException>()
+            );
 
             assignment.Dispose();
             values.Dispose();
@@ -90,8 +93,10 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(9, Allocator.Persistent);
             var assignment = new NativeArray<int>(2, Allocator.Persistent);
 
-            Assert.That(() => AuctionAlgorithm.Solve(values, 3, 3, assignment).Complete(),
-                Throws.InstanceOf<ArgumentException>());
+            Assert.That(
+                () => AuctionAlgorithm.SolveJob(values, 3, 3, assignment).Schedule().Complete(),
+                Throws.InstanceOf<ArgumentException>()
+            );
 
             assignment.Dispose();
             values.Dispose();
@@ -107,7 +112,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(new[] { 5f }, Allocator.Persistent);
             var assignment = new NativeArray<int>(1, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 1, 1, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 1, 1, assignment).Schedule().Complete();
 
             Assert.AreEqual(0, assignment[0]);
 
@@ -126,7 +131,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(2, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 2, 2, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 2, 2, assignment).Schedule().Complete();
 
             var result = new int[2];
             for (var i = 0; i < 2; i++) result[i] = assignment[i];
@@ -152,7 +157,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 3, 3, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 3, assignment).Schedule().Complete();
 
             var result = new int[3];
             for (var i = 0; i < 3; i++) result[i] = assignment[i];
@@ -176,7 +181,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 3, 3, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 3, assignment).Schedule().Complete();
 
             var result = new int[3];
             for (var i = 0; i < 3; i++) result[i] = assignment[i];
@@ -207,7 +212,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 3, 2, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 2, assignment).Schedule().Complete();
 
             var result = new int[3];
             for (var i = 0; i < 3; i++) result[i] = assignment[i];
@@ -231,7 +236,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 3, 2, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 2, assignment).Schedule().Complete();
 
             var result = new int[3];
             for (var i = 0; i < 3; i++) result[i] = assignment[i];
@@ -258,7 +263,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(2, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 2, 3, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 2, 3, assignment).Schedule().Complete();
 
             var result = new int[2];
             for (var i = 0; i < 2; i++) result[i] = assignment[i];
@@ -280,7 +285,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(0, Allocator.Persistent);
             var assignment = new NativeArray<int>(0, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 0, 0, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 0, 0, assignment).Schedule().Complete();
 
             Assert.IsEmpty(assignment);
 
@@ -300,7 +305,7 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
             var assignment = new NativeArray<int>(3, Allocator.Persistent);
 
-            AuctionAlgorithm.Solve(values, 3, 3, assignment).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 3, assignment).Schedule().Complete();
 
             var result = new int[3];
             for (var i = 0; i < 3; i++)
@@ -325,10 +330,10 @@ namespace HandyJobs.Tests.Auction
             var values = new NativeArray<float>(rawValues, Allocator.Persistent);
 
             var assignmentSmall = new NativeArray<int>(3, Allocator.Persistent);
-            AuctionAlgorithm.Solve(values, 3, 3, assignmentSmall, epsilon: 0.0001f).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 3, assignmentSmall, epsilon: 0.0001f).Schedule().Complete();
 
             var assignmentLarge = new NativeArray<int>(3, Allocator.Persistent);
-            AuctionAlgorithm.Solve(values, 3, 3, assignmentLarge, epsilon: 1f).Complete();
+            AuctionAlgorithm.SolveJob(values, 3, 3, assignmentLarge, epsilon: 1f).Schedule().Complete();
 
             for (var i = 0; i < 3; i++)
                 Assert.AreEqual(assignmentSmall[i], assignmentLarge[i],

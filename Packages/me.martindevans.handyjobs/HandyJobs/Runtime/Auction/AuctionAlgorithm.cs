@@ -15,21 +15,21 @@ namespace HandyJobs.Runtime.Auction
     public static class AuctionAlgorithm
     {
         /// <summary>
-        /// Solves an assignment problem with an auction.
+        /// Create a job which solves an assignment problem with an auction.
         ///
         /// values[agent * job_count + job] = value of assigning agent to job.
         ///
         /// Returns:
         /// assignment[agent] = job
         /// </summary>
-        public static JobHandle Solve(
+        public static AuctionJob SolveJob(
             NativeArray<float> values,
             int agentCount,
             int jobCount,
             NativeArray<int> assignment,
             float epsilon = 0.0001f,
-            uint? seed = null,
-            JobHandle dependsOn = default)
+            uint? seed = null
+        )
         {
             // Check arguments
             if (values.Length != agentCount * jobCount)
@@ -48,15 +48,36 @@ namespace HandyJobs.Runtime.Auction
                 for (var i = 0; i < initialValues.Length; i++)
                     s += 17 * unchecked((int)initialValues[i]);
 
-                seed = unchecked((uint)HashCode.Combine(s, epsilon, agentCount, jobCount, dependsOn));
+                seed = unchecked((uint)HashCode.Combine(s, epsilon, agentCount, jobCount));
             }
 
-            // Start job
-            return new AuctionJob(values, agentCount, jobCount, assignment, epsilon, seed.Value).Schedule(dependsOn);
+            // Create job
+            return new AuctionJob(values, agentCount, jobCount, assignment, epsilon, seed.Value);
+        }
+
+        /// <summary>
+        /// Solves an assignment problem with an auction.
+        ///
+        /// values[agent * job_count + job] = value of assigning agent to job.
+        ///
+        /// Returns:
+        /// assignment[agent] = job
+        /// </summary>
+        public static JobHandle Solve(
+            NativeArray<float> values,
+            int agentCount,
+            int jobCount,
+            NativeArray<int> assignment,
+            JobHandle dependsOn,
+            float epsilon = 0.0001f,
+            uint? seed = null
+        )
+        {
+            return SolveJob(values, agentCount, jobCount, assignment, epsilon, seed).Schedule(dependsOn);
         }
 
         [BurstCompile]
-        private struct AuctionJob
+        public struct AuctionJob
             : IJob
         {
             [ReadOnly] private readonly NativeArray<float> _values;

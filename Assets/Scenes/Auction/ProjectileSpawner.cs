@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using HandyJobs.Runtime.Auction;
 using Unity.Collections;
+using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = System.Random;
@@ -103,7 +104,7 @@ namespace Scenes.Auction
                 yield return null;
                 yield return new WaitForSeconds(0.1f);
 
-                // Clean up list
+                // Clean up dead objects from list
                 _projectiles.RemoveAll(a => !a);
 
                 // Setup values for each job
@@ -150,7 +151,7 @@ namespace Scenes.Auction
 
                 // Start assignment
                 using var assignment = new NativeArray<int>(Guns.Length, Allocator.Persistent);
-                var handle = AuctionAlgorithm.Solve(values, Guns.Length, _projectiles.Count, assignment);
+                var handle = AuctionAlgorithm.SolveJob(values, Guns.Length, _projectiles.Count, assignment).Schedule();
                 handle = values.Dispose(handle);
 
                 // Wait for job
