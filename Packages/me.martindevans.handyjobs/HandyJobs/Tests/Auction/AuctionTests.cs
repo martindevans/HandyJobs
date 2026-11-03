@@ -275,6 +275,29 @@ namespace HandyJobs.Tests.Auction
             values.Dispose();
         }
 
+        [Test]
+        public void TwoAgentsThreeJobs_AllowUnassigned()
+        {
+            var rawValues = new float[]
+            {
+                -10, -5, -1,
+                10, 20, 30,
+            };
+            var values = new NativeArray<float>(rawValues, Allocator.Persistent);
+            var assignment = new NativeArray<int>(2, Allocator.Persistent);
+
+            AuctionAlgorithm.SolveJob(values, 2, 3, assignment, allowUnassignedAgents: true).Schedule().Complete();
+
+            var result = new int[2];
+            for (var i = 0; i < 2; i++) result[i] = assignment[i];
+
+            AssertValidAssignment(result, 2, 3);
+            Assert.AreEqual(1, CountUnassigned(result), "Agent with only negative values should remain unassigned");
+
+            assignment.Dispose();
+            values.Dispose();
+        }
+
         #endregion
 
         #region Edge Cases

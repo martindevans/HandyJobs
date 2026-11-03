@@ -11,7 +11,7 @@ In UPM, install from git URL:
 
 ### Auction Algorithm
 
-Assigns workers to jobs. Each worker has a value for doing each job, the auction algorithm performs a global optimisation across all workers. For example; assigning defensive towers to targets in an RTS.
+Assigns workers to jobs. Each worker has a value for doing each job, the auction algorithm performs a global optimisation across all workers. For example; assigning defensive towers to targets in an RTS. Workers may remain unassigned if none of the jobs are worth bidding for (forced when workers outnumber jobs, otherwise opt-in via `allowUnassignedAgents`).
 
 ### Prefix Sum
 

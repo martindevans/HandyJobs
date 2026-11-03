@@ -19,6 +19,10 @@ namespace HandyJobs.Runtime.Auction
         ///
         /// values[agent * job_count + job] = value of assigning agent to job.
         ///
+        /// If allowUnassignedAgents is true, an agent may remain unassigned
+        /// (assignment[agent] = -1) when none of the jobs are worth bidding for.
+        /// The flag is forced on when agents outnumber jobs.
+        ///
         /// Returns:
         /// assignment[agent] = job
         /// </summary>
@@ -28,7 +32,8 @@ namespace HandyJobs.Runtime.Auction
             int jobCount,
             NativeArray<int> assignment,
             float epsilon = 0.0001f,
-            uint? seed = null
+            uint? seed = null,
+            bool allowUnassignedAgents = false
         )
         {
             // Check arguments
@@ -52,7 +57,7 @@ namespace HandyJobs.Runtime.Auction
             }
 
             // Create job
-            return new AuctionJob(values, agentCount, jobCount, assignment, epsilon, seed.Value);
+            return new AuctionJob(values, agentCount, jobCount, assignment, epsilon, seed.Value, allowUnassignedAgents);
         }
 
         [BurstCompile]
@@ -68,7 +73,7 @@ namespace HandyJobs.Runtime.Auction
 
             private NativeArray<int> _assignment;
 
-            public AuctionJob(NativeArray<float> values, int agentCount, int jobCount, NativeArray<int> assignment, float epsilon, uint seed)
+            public AuctionJob(NativeArray<float> values, int agentCount, int jobCount, NativeArray<int> assignment, float epsilon, uint seed, bool allowUnassignedAgents)
             {
                 _values = values;
                 _agentCount = agentCount;
@@ -77,7 +82,8 @@ namespace HandyJobs.Runtime.Auction
                 _epsilon = epsilon;
                 _seed = seed;
 
-                _allowUnassignedAgents = agentCount > jobCount;
+                // Forced on when agents outnumber jobs, since not all can be assigned
+                _allowUnassignedAgents = allowUnassignedAgents || agentCount > jobCount;
             }
 
             public void Execute()
